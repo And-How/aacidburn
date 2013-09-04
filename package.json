@@ -1,0 +1,14 @@
+{
+  "name": "acidburn",
+  "scripts": {
+    "start": "acidburn.js"
+  },
+  "dependencies": {
+    "twit": "1.1.x",
+    "express": "3.3.8"
+  },
+  "version": "0.0.1",
+  "engines": {
+    "node": "0.10.x"
+  }
+}
