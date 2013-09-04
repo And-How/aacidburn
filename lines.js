@@ -15,16 +15,22 @@ function getLine() {
     return lines[lineNo];
 }
 
-// Like Darius before us, we're hosting this on Nodejitsu. Nodejitsu requires a
-// webserver, so we're using Express on port 3000.
-var express = require('express');
+// Nodejitsu doesn't give us cheap hosting any more, so Heroku for now.
+// Setting up a web server for them.
+
+var express = require("express");
 var app = express();
+app.use(express.logger());
+
 app.get('/', function (req, res) {
     var body = getLine();
     res.send(body);
 });
-app.listen(3000);
-console.log(name + ' live on port 3000');
+
+var port = process.env.PORT || 5000;
+app.listen(port, function() {
+  console.log(name + " listening on " + port);
+});
 
 // Get Twitter Developer API info
 var T = new Twit(require('./config.js'));
